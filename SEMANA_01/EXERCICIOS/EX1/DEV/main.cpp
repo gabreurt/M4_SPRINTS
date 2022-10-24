@@ -1,4 +1,4 @@
-// Ei prof, passando para avisar que fiz este exercicio em conjunto com meus amigos Gustavo Ferreira (Turma 1), Lyorrei Quintão (Turma 1), Henrique Lemos (Turma 1) e Lívia Bonotto (Turma 5). Nos ajudamos durante todo o processo, porém fizemos separados!
+// Ei prof, passando para avisar que fiz este exercicio em conjunto com meus amigos Gabriel Elias (Turma 1), Gustavo Ferreira (Turma 1), Lyorrei Quintão (Turma 1), Henrique Lemos (Turma 1) e Lívia Bonotto (Turma 5). Nos ajudamos durante todo o processo, porém fizemos separados!
 #include <iostream>
 #include <string>
 
