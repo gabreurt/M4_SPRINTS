@@ -19,6 +19,7 @@ int converteSensor(int medida, int min, int max){
 
 
 // 2 - Faça uma função que simule a leitura de um sensor lendo o valor do teclado ao final a função retorna este valor
+
 // na função leComando, peço para o usuário um valor atraves do cin e guardo na var resposta através do cout
 int leComando(){
   int resposta;  
@@ -33,8 +34,9 @@ int leComando(){
 3 - Faça uma função que armazena uma medida inteira qualquer em um vetor fornecido. Note que como C não possui vetores nativos da linguagem, lembre-se que você precisa passar o valor máximo do vetor assim como a última posição preenchida.
 Evite também que, por acidente, um valor seja escrito em uma área de memória fora do vetor
 // */
+
 int insereVetor(int elemento, int valorMax, int lastPos, int* Vetor){
-    // aqui, crio uma outra variavel chamada indice, já que o lastPos começa com - 
+    // aqui, crio uma outra variavel chamada indice que nada mais é do que o próprio lastPos, apenas para uso livre
     int indice = lastPos;
    // verifico se o indice é menor que o valor maximo do vetor
     if (indice < valorMax) { 
@@ -69,6 +71,7 @@ char* dirMaiorDist(int *Vetor){
   return direcoes[indiceDasDirecoes];
 }
 
+// quase a mesma coisa que fiz acima
 int maiorDist(int *Vetor){
   int maiordist = Vetor[0];
     for (int i = 0; i < 4; i++){
@@ -84,6 +87,7 @@ return maiordist;
 
 
 int continuar(){
+  // basicamente gurado a variavel de resposta do usuario na var "numero" e verifico se ele deseja parar ou não
   int numero;
   cout << "Digite 1 para parar o mapeamento!";
   cin >> numero;
@@ -109,16 +113,20 @@ A função final deve utilizar as funções declaradas acima para ler os sensore
 // Defina as funções aqui
 
 int dirige(int *v,int maxv){
+  // declaro as variaveis dadas pelos parametros
 	int maxVetor = maxv;
 	int *vetorMov = v;
+  // e as variaveis para a propria funcao dirige, a posAtualVetor que é como a lastPos e o dirigindo.  
 	int posAtualVetor = 0;
 	int dirigindo = 1;		
 	while(dirigindo){		
+    // aqui, faço um for para ele fazer com cada direção as seguintes funcoes: ler, converter em % e inserir o vetor
     for (int i = 0; i < 4; i++){
       int medida = leComando();
       medida = converteSensor(medida, 0, 830);
 		  posAtualVetor = insereVetor(medida, maxVetor, posAtualVetor, vetorMov);
     }		
+    // pergunto se o usuario deseja continuar
 		dirigindo = continuar();		
 	}
 	return posAtualVetor;
@@ -133,6 +141,7 @@ void percorre(int *v,int tamPercorrido){
 	int maiorDir = 0;
 	
 	for(int i = 0; i< tamPercorrido; i+=4){
+    // fala a direcao e o numero dela
 		char *direcao = dirMaiorDist(&(vetorMov[i]));
     int maiordir = maiorDist(&(vetorMov[i]));
 		printf("Movimentando para %s distancia = %i% \n",direcao,maiordir);
