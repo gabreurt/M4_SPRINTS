@@ -101,18 +101,18 @@ void loop() {
   */   
 
   // aqui, coloco o valor do ldr numa var
-  int valor_LDR = analogRead(ldr);
+  int num_do_ldr = analogRead(ldr);
 // divido por 257, que é o valor para leitura do LDR da placa
-  int valor_convertido = valor_LDR / 257;
+  int num_do_ldr_padronizado = num_do_ldr / 257;
   // transformo o decimal em binario
-  dec_para_binario(valor_convertido);
+  dec_para_binario(num_do_ldr_padronizado);
 
-// aqui coloco para quando o led acender tocar a musica, e quando o botao de ler for clicado, ele tocar todas as frequencias.
+// aqui coloco para quando o botao de gravar a nota for apertado tocar a nota, e quando o botao de tocar a musica for clicado, ele tocar todas as frequencias/notas.
   led_aceso();
 
    if (digitalRead(botao_salvar) == LOW) {
 
-    frequencias[posicao] = valor_convertido;
+    frequencias[posicao] = num_do_ldr_padronizado;
     tone(buzzer, frequencias[posicao]*100, 350); 
     posicao += 1;
     delay(50);
@@ -128,15 +128,11 @@ void loop() {
       led_aceso();
 
       Serial.println(frequencias[posicao]*100);
-      Serial.println(valor_convertido);
+      Serial.println(num_do_ldr_padronizado);
     
       posicao = posicao-1;
     }
     while(digitalRead(botao_ler)== LOW){}
   }
- 
-  
-  
-  Serial.println(valor_convertido);
-  delay(500);
+  delay(50);
 }
