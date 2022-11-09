@@ -7,7 +7,7 @@
 #define led_amarelo 15
 #define botao_salvar 20
 #define botao_ler 21
-#define ldr 38
+#define ldr 14
 #define buzzer 4
 
 int binario[4];
@@ -103,7 +103,7 @@ void loop() {
   // aqui, coloco o valor do ldr numa var
   int num_do_ldr = analogRead(ldr);
 // divido por 257, que é o valor para leitura do LDR da placa
-  int num_do_ldr_padronizado = num_do_ldr / 257;
+  int num_do_ldr_padronizado = num_do_ldr / 273;
   // transformo o decimal em binario
   dec_para_binario(num_do_ldr_padronizado);
 
