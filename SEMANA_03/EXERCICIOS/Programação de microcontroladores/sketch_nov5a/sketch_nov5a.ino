@@ -102,7 +102,7 @@ void loop() {
 
   // aqui, coloco o valor do ldr numa var
   int num_do_ldr = analogRead(ldr);
-// divido por 257, que é o valor para leitura do LDR da placa
+// divido por 273, que é o valor para leitura do LDR da placa
   int num_do_ldr_padronizado = num_do_ldr / 273;
   // transformo o decimal em binario
   dec_para_binario(num_do_ldr_padronizado);
